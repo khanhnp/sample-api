@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  servlet:
+      context-path: /api
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /api-docs
+
+spring:
+  jackson:
+    date-format: com.spsvn.api.invoker.RFC3339DateFormat
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    export:
+      atlas:
+        enabled: true
+
+client:
+  a:
+    datasource:
+      url: jdbc:postgresql://localhost:5432/postgres
+      driver-class-name: org.postgresql.Driver
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      max-lifetime: -1
+      connection-timeout: -1
+      username: postgres
+      password: 12345!Fra
+  b:
+    datasource:
+      url: jdbc:postgresql://localhost:5432/postgres
+      driver-class-name: org.postgresql.Driver
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      max-lifetime: -1
+      connection-timeout: -1
+      username: postgres
+      password: 12345!Fra
