@@ -25,8 +25,6 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... arg0) throws Exception {
-
-        System.out.println("DATASOURCE = " + dataSource);
         if (arg0.length > 0 && arg0[0].equals("exitcode")) {
             throw new ExitException();
         }

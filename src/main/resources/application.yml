@@ -16,37 +16,45 @@ spring:
       WRITE_DATES_AS_TIMESTAMPS: false
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
 
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+    jolokia:
+      config:
+        debug: true
   metrics:
     export:
       atlas:
-        enabled: true
+        enabled: false
 
 client:
   a:
     datasource:
       url: jdbc:postgresql://localhost:5432/postgres
       driver-class-name: org.postgresql.Driver
-      minimum-idle: 5
-      maximum-pool-size: 10
+      minimum-idle: 10
+      maximum-pool-size: 50
       idle-timeout: 30000
       max-lifetime: -1
-      connection-timeout: -1
+      connection-timeout: 120000
       username: postgres
-      password: 12345!Fra
+      password: '{cipher}AQBz3ThjMhyyzKyfV08QavaCNYuF+5dNp/wkt+/Co0j2jrY7E+v2nNk+eFACimjIe7XpesTA9yFGZoTNzKj3jBLM9d6p2jaJvgNlk5T0RLE6y0hImINp04WFaSFumyMqgbBu45HqBy32IrP41FumG8QqmR87Fl7PY4+/3CgwjIMHSKt+4O1KuKabIXZq2ZVQbzvc7Q26wGMsCa8SDidOiZjjBsTeidkoLPIKEHJGap0UAEFxeqptE8/xhqFwzVQjHUhzDKSzdy/MhOBMTeHUAmpONvwIoPt0CgLg3fLNGNKFp41H9P1rJxRo5iehJrxfeERAP+7FVZX5txrz26juzJ+fpD+OtmMmRmNO+pJ4g9rQiU5h3f2SJE9mlzlubH6616s='
   b:
     datasource:
       url: jdbc:postgresql://localhost:5432/postgres
       driver-class-name: org.postgresql.Driver
       minimum-idle: 5
-      maximum-pool-size: 10
+      maximum-pool-size: 100
       idle-timeout: 30000
       max-lifetime: -1
-      connection-timeout: -1
+      connection-timeout: 120000
       username: postgres
-      password: 12345!Fra
+      password: '{cipher}AQBz3ThjMhyyzKyfV08QavaCNYuF+5dNp/wkt+/Co0j2jrY7E+v2nNk+eFACimjIe7XpesTA9yFGZoTNzKj3jBLM9d6p2jaJvgNlk5T0RLE6y0hImINp04WFaSFumyMqgbBu45HqBy32IrP41FumG8QqmR87Fl7PY4+/3CgwjIMHSKt+4O1KuKabIXZq2ZVQbzvc7Q26wGMsCa8SDidOiZjjBsTeidkoLPIKEHJGap0UAEFxeqptE8/xhqFwzVQjHUhzDKSzdy/MhOBMTeHUAmpONvwIoPt0CgLg3fLNGNKFp41H9P1rJxRo5iehJrxfeERAP+7FVZX5txrz26juzJ+fpD+OtmMmRmNO+pJ4g9rQiU5h3f2SJE9mlzlubH6616s='

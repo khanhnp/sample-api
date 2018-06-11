@@ -53,13 +53,24 @@ public class RoutingDataSourceConfiguration {
             @Value("${client.b.datasource.url}") String url,
             @Value("${client.b.datasource.username}") String username,
             @Value("${client.b.datasource.password}") String password,
-            @Value("${client.b.datasource.driver-class-name}") String driverClassName) {
-        return DataSourceBuilder.create()
+            @Value("${client.b.datasource.driver-class-name}") String driverClassName,
+            @Value("${client.b.datasource.maximum-pool-size:-1}") int maxPoolSize,
+            @Value("${client.b.datasource.minimum-idle:-1}") int minimumIdle,
+            @Value("${client.b.datasource.idle-timeout:-1}") long idleTimeout,
+            @Value("${client.b.datasource.max-lifetime:-1}") long maxLifetime,
+            @Value("${client.b.datasource.connection-timeout:-1}") long connectionTimeout) {
+        HikariDataSource dataSource = (HikariDataSource) DataSourceBuilder.create()
                 .url(url)
                 .username(username)
                 .password(password)
                 .driverClassName(driverClassName)
                 .build();
+        dataSource.setMaximumPoolSize(maxPoolSize);
+        dataSource.setMinimumIdle(minimumIdle);
+        dataSource.setIdleTimeout(idleTimeout);
+        dataSource.setMaxLifetime(maxLifetime);
+        dataSource.setConnectionTimeout(connectionTimeout);
+        return dataSource;
     }
 
     @Bean

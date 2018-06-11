@@ -23,7 +23,7 @@ public class Product {
   @Id
   @JsonProperty("id")
   @Column(name = "product_id")
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id = null;
 
   @Column(name = "name")
@@ -54,7 +54,7 @@ public class Product {
     @Override
     @JsonValue
     public String toString() {
-      return String.valueOf(value);
+      return value;
     }
 
     @JsonCreator
@@ -69,6 +69,7 @@ public class Product {
   }
 
   @Column(name = "status")
+  @Enumerated(value = EnumType.STRING)
   @JsonProperty("status")
   private StatusEnum status = null;
 
